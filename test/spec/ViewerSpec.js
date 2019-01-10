@@ -1,4 +1,4 @@
-import TokenSimulationViewerModules from 'lib/viewer';
+import TokenSimulationViewerModule from 'lib/viewer';
 import NavigatedViewer from 'bpmn-js/lib/NavigatedViewer';
 
 import {
@@ -13,7 +13,7 @@ describe('token-simulation - viewer', function() {
 
   beforeEach(bootstrapViewer(diagram, {
     additionalModules: [].concat(NavigatedViewer.prototype._modules).concat([
-      TokenSimulationViewerModules
+      TokenSimulationViewerModule
     ]),
     keyboard: {
       bindTo: document

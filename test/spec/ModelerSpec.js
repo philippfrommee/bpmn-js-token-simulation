@@ -1,4 +1,4 @@
-import TokenSimulationModelerModules from 'lib/modeler';
+import TokenSimulationModelerModule from 'lib/modeler';
 import Modeler from 'bpmn-js/lib/Modeler';
 
 import {
@@ -13,7 +13,7 @@ describe('token-simulation - modeler', function() {
 
   beforeEach(bootstrapModeler(diagram, {
     additionalModules: [].concat(Modeler.prototype._modules).concat([
-      TokenSimulationModelerModules
+      TokenSimulationModelerModule
     ]),
     keyboard: {
       bindTo: document
