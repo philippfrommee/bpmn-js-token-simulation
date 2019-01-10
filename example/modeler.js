@@ -1,15 +1,13 @@
-'use strict';
+import tokenSimulationModelerModule from '../lib/modeler';
 
-var tokenSimulation = require('../lib/modeler');
-
-var BpmnModeler = require('bpmn-js/lib/Modeler').default;
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 
 import exampleXML from './resources/example.bpmn';
 
 var modeler = new BpmnModeler({
   container: '#canvas',
   additionalModules: [
-    tokenSimulation
+    tokenSimulationModelerModule
   ],
   keyboard: {
     bindTo: document
@@ -23,5 +21,3 @@ modeler.importXML(exampleXML, function(err) {
     console.log('something went wrong:', err);
   }
 });
-
-window.modeler = modeler;

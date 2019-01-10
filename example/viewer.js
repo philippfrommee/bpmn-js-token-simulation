@@ -1,15 +1,13 @@
-'use strict';
+import tokenSimulationViewerModule from '../lib/viewer';
 
-var tokenSimulation = require('../lib/viewer');
-
-var BpmnViewer = require('bpmn-js/lib/NavigatedViewer').default;
+import BpmnViewer from 'bpmn-js/lib/NavigatedViewer';
 
 import exampleXML from './resources/example.bpmn';
 
 var viewer = new BpmnViewer({
   container: '#canvas',
   additionalModules: [
-    tokenSimulation
+    tokenSimulationViewerModule
   ],
   keyboard: {
     bindTo: document
@@ -23,5 +21,3 @@ viewer.importXML(exampleXML, function(err) {
     console.log('something went wrong:', err);
   }
 });
-
-window.viewer = viewer;

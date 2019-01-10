@@ -3,3 +3,4 @@ coverage
 example/css
 example/fonts
 example/*.bundle.js
+example/*.bundle.js.map
