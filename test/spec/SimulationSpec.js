@@ -7,7 +7,7 @@ import {
   inject
 } from 'test/TestHelper';
 
-import EventHelper, {
+import {
   CONSUME_TOKEN_EVENT,
   GENERATE_TOKEN_EVENT,
   PROCESS_INSTANCE_CREATED_EVENT,
@@ -22,6 +22,13 @@ import {
 } from 'min-dash';
 
 var VERY_HIGH_PRIORITY = 100000;
+
+var EVENTS = [
+  CONSUME_TOKEN_EVENT,
+  GENERATE_TOKEN_EVENT,
+  PROCESS_INSTANCE_CREATED_EVENT,
+  PROCESS_INSTANCE_FINISHED_EVENT
+];
 
 
 describe('token simulation', function() {
@@ -236,7 +243,7 @@ Log.prototype._log = function(event) {
 Log.prototype.start = function() {
   var self = this;
 
-  forEach(EventHelper, function(event) {
+  forEach(EVENTS, function(event) {
     self.eventBus.on(event, VERY_HIGH_PRIORITY, self._log);
   });
 };
@@ -244,7 +251,7 @@ Log.prototype.start = function() {
 Log.prototype.stop = function() {
   var self = this;
 
-  forEach(EventHelper, function(event) {
+  forEach(EVENTS, function(event) {
     self.eventBus.off(event, self._log);
   });
 };
