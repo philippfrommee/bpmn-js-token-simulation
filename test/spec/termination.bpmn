@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="sid-38422fae-e03e-43a3-bef4-bd33b32041b2" targetNamespace="http://bpmn.io/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="7.5.0">
+  <process id="Process_1" isExecutable="true">
+    <subProcess id="SubProcess">
+      <incoming>Flow_14xkz7k</incoming>
+      <outgoing>Flow_0hro0il</outgoing>
+      <startEvent id="SubStart" name="SUB START">
+        <outgoing>Flow_0m1z8qo</outgoing>
+      </startEvent>
+      <sequenceFlow id="Flow_0m1z8qo" sourceRef="SubStart" targetRef="SubCatch" />
+      <intermediateCatchEvent id="SubCatch" name="SUB CATCH">
+        <incoming>Flow_0m1z8qo</incoming>
+        <outgoing>Flow_08b9g03</outgoing>
+        <messageEventDefinition id="MessageEventDefinition_1pzli7e" />
+      </intermediateCatchEvent>
+      <endEvent id="SubEnd" name="SUB END">
+        <incoming>Flow_08b9g03</incoming>
+      </endEvent>
+      <sequenceFlow id="Flow_08b9g03" sourceRef="SubCatch" targetRef="SubEnd" />
+    </subProcess>
+    <endEvent id="TerminateEnd" name="TERMINATE END">
+      <incoming>Flow_1aizfux</incoming>
+      <terminateEventDefinition id="TerminateEventDefinition_0ljvvcz" />
+    </endEvent>
+    <endEvent id="End" name="END">
+      <incoming>Flow_0hro0il</incoming>
+    </endEvent>
+    <sequenceFlow id="Flow_0hro0il" sourceRef="SubProcess" targetRef="End" />
+    <startEvent id="Start" name="START">
+      <outgoing>Flow_17n1pg9</outgoing>
+    </startEvent>
+    <sequenceFlow id="Flow_17n1pg9" sourceRef="Start" targetRef="ParallelGateway" />
+    <sequenceFlow id="Flow_14xkz7k" sourceRef="ParallelGateway" targetRef="SubProcess" />
+    <parallelGateway id="ParallelGateway">
+      <incoming>Flow_17n1pg9</incoming>
+      <outgoing>Flow_14xkz7k</outgoing>
+      <outgoing>Flow_1noooqz</outgoing>
+    </parallelGateway>
+    <task id="Task" name="TASK">
+      <incoming>Flow_1noooqz</incoming>
+      <outgoing>Flow_1aizfux</outgoing>
+    </task>
+    <sequenceFlow id="Flow_1noooqz" sourceRef="ParallelGateway" targetRef="Task" />
+    <sequenceFlow id="Flow_1aizfux" sourceRef="Task" targetRef="TerminateEnd" />
+  </process>
+  <bpmndi:BPMNDiagram id="BpmnDiagram_1">
+    <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNEdge id="Flow_17n1pg9_di" bpmnElement="Flow_17n1pg9">
+        <omgdi:waypoint x="218" y="220" />
+        <omgdi:waypoint x="325" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hro0il_di" bpmnElement="Flow_0hro0il">
+        <omgdi:waypoint x="850" y="220" />
+        <omgdi:waypoint x="902" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14xkz7k_di" bpmnElement="Flow_14xkz7k">
+        <omgdi:waypoint x="375" y="220" />
+        <omgdi:waypoint x="500" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1noooqz_di" bpmnElement="Flow_1noooqz">
+        <omgdi:waypoint x="350" y="245" />
+        <omgdi:waypoint x="350" y="420" />
+        <omgdi:waypoint x="490" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1aizfux_di" bpmnElement="Flow_1aizfux">
+        <omgdi:waypoint x="590" y="420" />
+        <omgdi:waypoint x="692" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TerminateEnd_di" bpmnElement="TerminateEnd">
+        <omgdc:Bounds x="692" y="402" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="666" y="445" width="89" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Start_di" bpmnElement="Start">
+        <omgdc:Bounds x="182" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="182" y="245" width="36" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_di" bpmnElement="End">
+        <omgdc:Bounds x="902" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="908" y="245" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0i6wo4a_di" bpmnElement="ParallelGateway">
+        <omgdc:Bounds x="325" y="195" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_di" bpmnElement="Task">
+        <omgdc:Bounds x="490" y="380" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubProcess_di" bpmnElement="SubProcess" isExpanded="true">
+        <omgdc:Bounds x="500" y="120" width="350" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_08b9g03_di" bpmnElement="Flow_08b9g03">
+        <omgdi:waypoint x="688" y="220" />
+        <omgdi:waypoint x="752" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m1z8qo_di" bpmnElement="Flow_0m1z8qo">
+        <omgdi:waypoint x="596" y="220" />
+        <omgdi:waypoint x="652" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1kw6or7_di" bpmnElement="SubStart">
+        <omgdc:Bounds x="560" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="548" y="245" width="61" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1acoysv_di" bpmnElement="SubCatch">
+        <omgdc:Bounds x="652" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="639" y="245" width="63" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubEnd_di" bpmnElement="SubEnd">
+        <omgdc:Bounds x="752" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="746" y="245" width="49" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
